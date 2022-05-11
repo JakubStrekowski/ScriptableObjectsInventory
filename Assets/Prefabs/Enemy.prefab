@@ -58,9 +58,9 @@ GameObject:
   - component: {fileID: 3700720700125781120}
   - component: {fileID: 3700720700125781123}
   - component: {fileID: 3700720700125781887}
+  - component: {fileID: 3700720700125781884}
   - component: {fileID: 3700720700125781886}
   - component: {fileID: 3700720700125781121}
-  - component: {fileID: 3700720700125781884}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -150,32 +150,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.28
---- !u!114 &3700720700125781886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3700720700125781122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4c30fabb1763814aae26434187aab17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ATTACK_RANGE: 8
---- !u!114 &3700720700125781121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3700720700125781122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c959193ee5ce0894caadb1d5916b120b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentLogic: {fileID: 3700720700125781886}
 --- !u!50 &3700720700125781884
 Rigidbody2D:
   serializedVersion: 4
@@ -197,3 +171,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3700720700125781886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3700720700125781122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c30fabb1763814aae26434187aab17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ATTACK_RANGE: 8
+  inventory: []
+  _itemShell: {fileID: 1853278438365734543, guid: 032c6a22a9aa3104b8e32499fe1a2d8b, type: 3}
+--- !u!114 &3700720700125781121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3700720700125781122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c959193ee5ce0894caadb1d5916b120b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentLogic: {fileID: 3700720700125781886}
