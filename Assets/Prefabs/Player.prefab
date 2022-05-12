@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 392116447727958273}
   - component: {fileID: 392116447727958278}
   - component: {fileID: 392116447727958277}
-  m_Layer: 0
+  - component: {fileID: 4765319535143283479}
+  - component: {fileID: 3734654189256822931}
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -99,6 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6
   mainCamera: {fileID: 0}
+  _projectile: {fileID: 5567731791833539603, guid: 0c8982c8b8872d44996e4e8eed8734f6, type: 3}
+  _enemy: {fileID: 3700720700125781122, guid: e391f156b2545f145a003de8bdee7920, type: 3}
 --- !u!58 &392116447727958278
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -136,3 +140,35 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4765319535143283479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392116447727958274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0852a49fd790444b96d76c96a0edd8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uIManager: {fileID: 0}
+--- !u!114 &3734654189256822931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392116447727958274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115f5994ada3cf4428dc44005522d194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventoryImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _inventoryDurabilities: []

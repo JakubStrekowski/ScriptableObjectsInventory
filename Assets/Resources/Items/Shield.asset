@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Shield
   m_EditorClassIdentifier: 
   name: Shield
+  type: 2
   icon: {fileID: 21300000, guid: 7d905436cb396714fabe2c5e613ac924, type: 3}
   tilt: {r: 1, g: 1, b: 1, a: 1}
   baseCost: 10
   durability: 100
+  durabilityPerUse: 10

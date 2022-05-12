@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a07dd94ed8a9884b8e8b024f3c11c6d, type: 3}
   m_Name: Potion
   m_EditorClassIdentifier: 
-  name: Default Item
+  name: Potion
   type: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: a8e9e5a732c2ddb41a6fb0f3f8258878, type: 3}
   tilt: {r: 1, g: 1, b: 1, a: 1}
   baseCost: 10
   durability: 100
+  durabilityPerUse: 10

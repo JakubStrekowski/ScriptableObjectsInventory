@@ -5,16 +5,18 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Deadly
+  - Pickable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Hazard
+  - PlayerProjectile
+  - Enemy
   - 
   - 
   - 

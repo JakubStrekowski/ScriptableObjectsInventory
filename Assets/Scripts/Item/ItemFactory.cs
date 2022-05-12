@@ -18,6 +18,8 @@ public static class ItemFactory
 
     public static ItemSO GetRandomItem()
     {
-        return allItems[Random.Range(0, allItems.Length)];
+        ItemSO newItem = ItemSO.CreateInstance(allItems[Random.Range(0, allItems.Length)]);
+        newItem.durability = Random.Range(20, 101);
+        return newItem;
     }
 }

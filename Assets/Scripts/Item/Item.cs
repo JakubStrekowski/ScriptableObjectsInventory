@@ -12,5 +12,6 @@ public class Item : MonoBehaviour
     public void InitItemData()
     {
         sr.sprite = itemData.icon;
+        sr.color = itemData.tilt;
     }
 }

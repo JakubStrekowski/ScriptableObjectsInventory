@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a07dd94ed8a9884b8e8b024f3c11c6d, type: 3}
-  m_Name: New Item SO
+  m_Name: LongBow
   m_EditorClassIdentifier: 
-  name: Default Item
-  type: 0
-  icon: {fileID: 0}
-  tilt: {r: 1, g: 1, b: 1, a: 1}
+  name: Long Bow
+  type: 1
+  icon: {fileID: 21300000, guid: dd74cafdc47987e4aafb3dffd54e20de, type: 3}
+  tilt: {r: 0.6556604, g: 1, b: 0.6822682, a: 1}
   baseCost: 10
   durability: 100
+  durabilityPerUse: 10

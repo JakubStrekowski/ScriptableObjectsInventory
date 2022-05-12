@@ -15,7 +15,7 @@ public class EnemyLogic : MonoBehaviour
 
 
     public float attackRange = 8f;
-    public float attackCooldown = 3f;
+    public float attackCooldown = 1.5f;
     public ItemSO[] inventory;
     public ItemSO equippedWeapon;
 
@@ -32,8 +32,9 @@ public class EnemyLogic : MonoBehaviour
     private void Start()
     {
         _isAttackReady = true;
-        inventory = ItemFactory.GetRandomInventory(); 
-        equippedWeapon.durability = Random.Range(40f, 100f);
+        inventory = ItemFactory.GetRandomInventory();
+        equippedWeapon = ItemSO.CreateInstance(equippedWeapon);
+        equippedWeapon.durability = Random.Range(40, 101);
         Debug.Log("Equipped weapon with " + equippedWeapon.durability + "durability");
     }
     private void Update()
@@ -95,11 +96,13 @@ public class EnemyLogic : MonoBehaviour
         _target = transform;
     }
 
-    public void OnMouseDown()
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        DropItems();
-        Debug.Log("death");
-        Destroy(gameObject);
+        if (collider.tag == "Deadly")
+        {
+            DropItems();
+            Destroy(gameObject);
+        }
     }
 
     private bool IsAbleToAttack()

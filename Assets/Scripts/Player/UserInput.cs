@@ -10,6 +10,12 @@ public class UserInput : MonoBehaviour
     [SerializeField]
     private Camera mainCamera;
 
+    [SerializeField]
+    private GameObject _projectile;
+
+    [SerializeField]
+    private GameObject _enemy;
+
 
     void Update()
     {
@@ -41,6 +47,22 @@ public class UserInput : MonoBehaviour
                 transform.position.x - moveSpeed * Time.deltaTime, 
                 transform.position.y, 
                 transform.position.z);
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Instantiate(_projectile, transform.position, transform.rotation);
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Instantiate(_enemy, 
+                new Vector3(
+                    mousePos.x,
+                    mousePos.y,
+                    transform.position.z), 
+                Quaternion.identity);
         }
 
         Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

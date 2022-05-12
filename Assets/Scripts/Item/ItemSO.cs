@@ -15,7 +15,7 @@ public class ItemSO : ScriptableObject
     public new string name = "Default Item";
     public EItemType type;
     public Sprite icon;
-    public Color tilt = new Color(1,1,1);
+    public Color tilt = Color.white;
     public int baseCost = 10;
     public float durability = 100;
     public float durabilityPerUse = 10;
@@ -24,5 +24,10 @@ public class ItemSO : ScriptableObject
     {
         durability -= durabilityPerUse;
         if (durability < 0) durability = 0; 
+    }
+
+    public static ItemSO CreateInstance(ItemSO itemSO)
+    {
+        return Instantiate(itemSO);
     }
 }
