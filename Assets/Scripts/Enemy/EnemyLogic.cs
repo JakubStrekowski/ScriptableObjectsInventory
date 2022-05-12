@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class EnemyLogic : MonoBehaviour
 {
@@ -13,18 +14,27 @@ public class EnemyLogic : MonoBehaviour
     private readonly float MOVE_SPEED = 4f;
 
 
-    public float ATTACK_RANGE = 8f;
+    public float attackRange = 8f;
+    public float attackCooldown = 3f;
     public ItemSO[] inventory;
+    public ItemSO equippedWeapon;
 
     [SerializeField]
     private GameObject _itemShell;
 
+    [SerializeField]
+    private GameObject _projectile;
+
     private EnemyLogicStates _currentState = EnemyLogicStates.Idle;
     private Transform _target;
+    private bool _isAttackReady;
 
     private void Start()
     {
-        inventory = ItemFactory.GetRandomInventory();
+        _isAttackReady = true;
+        inventory = ItemFactory.GetRandomInventory(); 
+        equippedWeapon.durability = Random.Range(40f, 100f);
+        Debug.Log("Equipped weapon with " + equippedWeapon.durability + "durability");
     }
     private void Update()
     {
@@ -45,7 +55,7 @@ public class EnemyLogic : MonoBehaviour
                     return;
                 }
 
-                if (Vector2.Distance(_target.position, transform.position) < ATTACK_RANGE)
+                if (Vector2.Distance(_target.position, transform.position) < attackRange)
                 {
                     _currentState = EnemyLogicStates.Attack;
                     return;
@@ -64,10 +74,15 @@ public class EnemyLogic : MonoBehaviour
                     return;
                 }
 
-                if (Vector2.Distance(_target.position, transform.position) >= ATTACK_RANGE)
+                if (Vector2.Distance(_target.position, transform.position) >= attackRange)
                 {
                     _currentState = EnemyLogicStates.Follow;
                     return;
+                }
+
+                if (IsAbleToAttack())
+                {
+                    StartCoroutine(nameof(Attack));
                 }
 
                 transform.up = _target.position - transform.position;
@@ -87,6 +102,35 @@ public class EnemyLogic : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private bool IsAbleToAttack()
+    {
+        if (equippedWeapon == null)
+        {
+            return false;
+        }
+        if (equippedWeapon.durability <= 0 ||
+            !_isAttackReady)
+        {
+            return false;
+        }
+        return true;
+    }
+    private IEnumerator Attack()
+    {
+        _isAttackReady = false;
+
+        Instantiate(_projectile, transform.position, transform.rotation);
+
+        equippedWeapon.OnItemUsed();
+        if (equippedWeapon.durability == 0)
+        {
+            equippedWeapon = null;
+        }
+
+        yield return new WaitForSeconds(attackCooldown);
+        _isAttackReady = true;
+    }
+
     private void DropItems()
     {
         foreach (ItemSO itemData in inventory)
@@ -98,6 +142,18 @@ public class EnemyLogic : MonoBehaviour
 
             droppedItem.GetComponent<Item>().itemData = itemData;
             droppedItem.GetComponent<Item>().InitItemData();
+        }
+
+        if (equippedWeapon != null)
+        {
+            GameObject droppedItem = Instantiate(
+                _itemShell,
+                transform.position,
+                Quaternion.identity);
+
+            droppedItem.GetComponent<Item>().itemData = equippedWeapon;
+            droppedItem.GetComponent<Item>().InitItemData();
+            Debug.Log("Dropped weapon with " + equippedWeapon.durability + "durability");
         }
     }
 }
